@@ -1,8 +1,19 @@
-#include <algorithm>
-#include <cmath>
 #include <iostream>
-#include <vector>
+#include <queue>
 using namespace std;
+
+struct compare {
+    bool operator()(int o1, int o2) {
+        int first_abs = abs(o1);
+        int second_abs = abs(o2);
+
+        if (first_abs == second_abs) {
+            return o1 > o2;
+        } else {
+			return first_abs > second_abs;
+		}
+    }
+};
 
 int main() {
     ios::sync_with_stdio(false);
@@ -12,30 +23,21 @@ int main() {
     int N;
     cin >> N;
 
-    vector<int> order;
-    vector<int> ans;
+    priority_queue<int, vector<int>, compare> MyQueue;
 
-    for (int i = 0; i < N; i++) {
-        int su;
-        cin >> su;
+	for (int i = 0; i < N; i++) {
+		int request;
+		cin >> request;
 
-        if (su != 0) {
-            auto it = lower_bound(order.begin(), order.end(), su, [](int a, int b) {
-                if (abs(a) != abs(b)) return abs(a) < abs(b);
-                return a < b;
-            });
-           order.insert(it, su);
-        } else {
-			if (order.empty()) {
-				ans.push_back(0);
+		if (request == 0) {
+			if (MyQueue.empty()) {
+				cout << "0\n";
 			} else {
-				ans.push_back(order[0]);
-				order.erase(order.begin());
+				cout << MyQueue.top() << "\n";
+				MyQueue.pop();
 			}
+		} else {
+			MyQueue.push(request);
 		}
-    }
-
-	for (int i = 0; i < ans.size(); i++) {
-		cout << ans[i] << "\n";
 	}
 }
