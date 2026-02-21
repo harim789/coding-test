@@ -3,13 +3,6 @@
 #include <algorithm>
 using namespace std;
 
-bool compare(pair<int, int> a, pair<int, int> b) {
-	if (a.second == b.second) {
-		return a.first < b.first;
-	}
-	return a.second < b.second;
-}
-
 int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
@@ -20,16 +13,16 @@ int main() {
 
 	vector<pair<int, int>> A(N);
 	for (int i = 0; i < N; i++) {
-		cin >> A[i].second;
-		A[i].first = i;
+		cin >> A[i].first;
+		A[i].second = i;
 	}
 
-	sort(A.begin(), A.end(), compare);
+	sort(A.begin(), A.end());
 
 	int max = 0;
 	for (int i = 0; i < N; i++) {
-		if (max < A[i].first - i) {
-			max = A[i].first - i;
+		if (max < A[i].second - i) {
+			max = A[i].second - i;
 		}
 	}
 
