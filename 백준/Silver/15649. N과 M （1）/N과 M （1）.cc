@@ -3,11 +3,9 @@
 using namespace std;
 
 static int N, M;
-static vector<vector<int>> A;
 static vector<bool> visited;
-static vector<vector<int>> result;
 void DFS(int v, int depth);
-static int result_index;
+static vector<vector<int>> result;
 static vector<int> each_result;
 
 int main() {
@@ -16,17 +14,7 @@ int main() {
     cout.tie(NULL);
 
     cin >> N >> M;
-
-    A.resize(N + 1);
     visited = vector<bool>(N + 1, false);
-
-    for (int i = 1; i <= N; i++) {
-        for (int j = 1; j <= N; j++) {
-            if (i != j) {
-                A[i].push_back(j);
-            }
-        }
-    }
 
     for (int i = 1; i <= N; i++) {
         DFS(i, 1);
@@ -51,13 +39,14 @@ void DFS(int v, int depth) {
     if (depth == M) {
         result.push_back(each_result);
     } else {
-        for (int i : A[v]) {
+        for (int i = 1; i <= N; i++) {
             if (!visited[i]) {
                 DFS(i, depth + 1);
             }
         }
     }
 
+	// 백트래킹 핵심: 상태 복구
 	each_result.pop_back();
     visited[v] = false;
 }
