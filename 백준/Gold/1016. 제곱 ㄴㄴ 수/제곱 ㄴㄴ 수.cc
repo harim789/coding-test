@@ -11,23 +11,25 @@ int main() {
     cin >> min >> max;
     vector<bool> Check(max - min + 1, false);
 
-    for (long i = 2; i * i <= max; i++) {
-        long pow = i * i;
-        long start_index = min / pow;
+	for (long i = 2; i * i <= max; i++) {
+		long pow = i * i;
+		long start_index = min / pow;
 
-        if (min % pow != 0) {
-            start_index++;
-        }
+		if (min % pow != 0) {
+			start_index++;
+		}
 
-        for (long j = start_index; j * pow <= max; j++) {
-            Check[(int)(j * pow - min)] = true;
-        }
-    }
+		for (long j = start_index; j * pow <= max; j++) {
+			Check[(int)(j * pow - min)] = true;
+		}
+	}
 
-    int count = 0;
-    for (int i = 0; i <= max - min; i++) {
-        if (!Check[i]) count++;
-    }
+	int count = 0;
+	for (int i = 0; i <= max - min; i++) {
+		if (!Check[i]) {
+			count++;
+		}
+	}
 
-    cout << count << '\n';
+	cout << count << '\n';
 }
