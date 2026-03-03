@@ -10,9 +10,8 @@ int main() {
     long n;
     cin >> n;
     long result = n;
-	long fix_n = n;
 
-    for (long p = 2; p <= sqrt(fix_n); p++) {
+    for (long p = 2; p <= sqrt(n); p++) {
         if (n % p == 0) {
             result = result - result / p;
 
