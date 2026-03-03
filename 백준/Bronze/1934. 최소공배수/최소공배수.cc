@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+int gcd(int a, int b);
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
@@ -13,27 +15,15 @@ int main() {
         int A, B;
         cin >> A >> B;
 
-        int bigger = A;
-        int smaller = B;
-        if (A < B) {
-            bigger = B;
-			smaller = A;
-        }
+        int result = A * B / gcd(A, B);
+        cout << result << '\n';
+    }
+}
 
-		while (bigger % smaller != 0) {
-			int temp = smaller;
-			smaller = bigger % smaller;
-			bigger = temp;
-		}
-		int GCD = smaller;
-
-		int LCM;
-		if (GCD == 1) {
-			LCM = A * B;
-		} else {
-			LCM = A * B / GCD;
-		}
-
-		cout << LCM << '\n';
+int gcd(int a, int b) {
+    if (a % b == 0) {
+        return b;
+    } else {
+        return gcd(b, a % b);
     }
 }
