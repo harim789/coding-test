@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main() {
@@ -8,47 +9,29 @@ int main() {
 
     int n, m;
     cin >> n >> m;
-    char A[n][m];
+    vector<string> A(n);
 
-    for (int i = 0; i < n; i++) {
-        string line;
-        cin >> line;
-        for (int j = 0; j < m; j++) {
-            A[i][j] = line[j];
-        }
-    }
+    for (int i = 0; i < n; i++) cin >> A[i];
 
-    int min = 64;
+    int min_repaint = 64;
     for (int i = 0; i <= n - 8; i++) {
         for (int j = 0; j <= m - 8; j++) {
-            int repaint_1 = 0;
-			int repaint_2 = 0;
+            int countW = 0;
 
             for (int x = i; x < i + 8; x++) {
                 for (int y = j; y < j + 8; y++) {
-                    if ((x % 2 == i % 2 && y % 2 == j % 2) || (x % 2 != i % 2 && y % 2 != j % 2)) {
-                        if (A[x][y] != A[i][j]) {
-                            repaint_1++;
-                        } else {
-							repaint_2++;
-						}
+                    if ((x + y) % 2 == 0) {
+                        if (A[x][y] != 'W') countW++;
                     } else {
-                        if (A[x][y] == A[i][j]) {
-                            repaint_1++;
-                        } else {
-							repaint_2++;
-						}
+                        if (A[x][y] != 'B') countW++;
                     }
                 }
             }
 
-			int smaller = repaint_1;
-			if (repaint_1 > repaint_2) {
-				smaller = repaint_2;
-			}
-            if (smaller < min) min = smaller;
+            int smaller = min(countW, 64 - countW);
+			if (smaller < min_repaint) min_repaint = smaller;
         }
     }
 
-    cout << min << '\n';
+    cout << min_repaint << '\n';
 }
