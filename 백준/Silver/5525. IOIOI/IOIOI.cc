@@ -10,16 +10,16 @@ int main() {
     int n, m;
     cin >> n >> m;
 
-	string str;
+    string str;
     cin >> str;
 
-	int res = 0;
+    int res = 0;
     for (int left = 0; left < m - 1; left++) {
-		int i = left;
-        if (str[i] == 'I' && str[i + 1] == 'O' && str[i] == 'I') {
+        int i = left;
+        if (str[i] == 'I' && str[i + 1] == 'O' && str[i + 2] == 'I') {
             int patternCnt = 0;
 
-            while(str[i + 1] == 'O' && str[i + 2] == 'I') {
+            while (str[i + 1] == 'O' && str[i + 2] == 'I') {
                 patternCnt++;
 
                 if (patternCnt == n) {
@@ -30,5 +30,5 @@ int main() {
         }
     }
 
-	cout << res << '\n';
+    cout << res << '\n';
 }
