@@ -14,9 +14,8 @@ int main() {
     cin >> str;
 
     int res = 0;
-    for (int left = 0; left < m - 1; left++) {
-        int i = left;
-        if (str[i] == 'I' && str[i + 1] == 'O' && str[i + 2] == 'I') {
+    for (int i = 0; i < m - 1; i++) {
+        if (str[i] == 'I') {
             int patternCnt = 0;
 
             while (str[i + 1] == 'O' && str[i + 2] == 'I') {
@@ -24,6 +23,7 @@ int main() {
 
                 if (patternCnt == n) {
                     res++;
+					patternCnt--;
                 }
                 i += 2;
             }
