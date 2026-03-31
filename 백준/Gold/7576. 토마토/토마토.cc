@@ -34,10 +34,11 @@ int main() {
         for (int j = 0; j < m; j++) {
             if (a[i][j] == 0) {
                 isRipe = false;
-				break;
+				goto end_loop;
             }
         }
     }
+	end_loop:
 
     if (isRipe) {
         cout << cnt << '\n';
