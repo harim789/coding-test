@@ -1,0 +1,26 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+
+		float sum = 0;
+        for (int j = 0; j < x; j++) {
+			string str;
+			int gasu;
+			float f;
+
+			cin >> str >> gasu >> f;
+
+			sum += gasu * f;
+        }
+		cout << '$';
+		cout << fixed << setprecision(2) << sum << '\n';
+    }
+}
