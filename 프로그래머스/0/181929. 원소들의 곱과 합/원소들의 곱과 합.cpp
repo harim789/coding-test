@@ -1,16 +1,6 @@
-#include <iostream>
-#include <vector>
-using namespace std; 
+#include <bits/stdc++.h>
+using namespace std;
 
 int solution(vector<int> num_list) {
-    int sum = 0;
-    int mul = 1;
-    
-    for (int num: num_list) {
-        sum += num;
-        mul *= num;
-    }
-    
-    int result = (mul < sum * sum);
-    return result;
+    return accumulate(num_list.begin(), num_list.end(), 1, multiplies<int>()) < pow(accumulate(num_list.begin(), num_list.end(), 0), 2) ? 1 : 0;
 }
