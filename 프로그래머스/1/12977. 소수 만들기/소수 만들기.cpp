@@ -7,7 +7,7 @@ int sosu[3000];
 void eratos() {
     sosu[0] = sosu[1] = 1;
     
-    for (int i = 2; i <= 2997; i++) {
+    for (int i = 2; i * i <= 2997; i++) {
         if (!sosu[i]) {
             for (int j = i * i; j <= 2997; j += i) {
                 sosu[j] = 1;
