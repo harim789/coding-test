@@ -5,9 +5,7 @@ using namespace std;
 int solution(int number, int limit, int power) {
     vector<int> v(number + 1, 0);
     
-    v[1] = 1;
-    
-    for (int i = 2; i <= number; i++) {
+    for (int i = 1; i <= number; i++) {
         for (long long j = 1; j * j <= i; j++) {
             if (j * j == i) {
                 v[i]++;
