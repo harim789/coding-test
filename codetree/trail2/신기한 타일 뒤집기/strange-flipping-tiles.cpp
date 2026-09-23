@@ -50,4 +50,6 @@ int main() {
     }
 
     cout << white << ' ' << black;
+
+    return 0;
 }
