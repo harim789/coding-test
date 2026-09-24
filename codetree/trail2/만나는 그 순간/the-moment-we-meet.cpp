@@ -20,7 +20,7 @@ int main() {
     }
 
     int a_pos[2000000];
-    int a_cur = 1000;
+    int a_cur = 1000000;
     int time = 1;
 
     for (int i = 0; i < n; i++) {
@@ -42,7 +42,7 @@ int main() {
     int time_min = time;
 
     int b_pos[2000000];
-    int b_cur = 1000;
+    int b_cur = 1000000;
     time = 1;
 
     for (int i = 0; i < m; i++) {
