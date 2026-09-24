@@ -1,13 +1,15 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main() {
     int n, m;
-
-    int av[1000], at[1000];
-    int bv[1000], bt[1000];
-
     cin >> n >> m;
+
+    vector<int> av(n, 0);
+    vector<int> at(n, 0);
+    vector<int> bv(m, 0);
+    vector<int> bt(m, 0);
 
     for (int i = 0; i < n; i++) {
         cin >> av[i] >> at[i];
@@ -17,7 +19,7 @@ int main() {
         cin >> bv[i] >> bt[i];
     }
 
-    int a_pos[1000000] = {0};
+    vector<int> a_pos(1000000, 0);
     int a_cur = 0;
     int time = 1;
 
