@@ -35,19 +35,17 @@ int main() {
         int nr = cur_r + dir_r[dir];
         int nc = cur_c + dir_c[dir];
 
-        if (inRange(nr, nc) && mat[nr][nc] == 0) {
-            mat[nr][nc] = fill;
-
-            cur_r += dir_r[dir];
-            cur_c += dir_c[dir];
-        } else {
+        if (!inRange(nr, nc) || mat[nr][nc] != 0) {
             dir = (dir + 1) % 4;
 
-            cur_r += dir_r[dir];
-            cur_c += dir_c[dir];
-
-            mat[cur_r][cur_c] = fill;
+            nr = cur_r + dir_r[dir];
+            nc = cur_c + dir_c[dir];
         }
+
+        mat[nr][nc] = fill;
+
+        cur_r += dir_r[dir];
+        cur_c += dir_c[dir];
     }
 
     for (int i = 0; i < n; i++) {
