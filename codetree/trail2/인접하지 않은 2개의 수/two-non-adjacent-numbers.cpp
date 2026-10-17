@@ -14,11 +14,9 @@ int main() {
 
     int res = 0;
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (j < i - 1 || j > i + 1) {
-                int hap = a[i] + a[j];
-                res = max(res, hap);
-            }
+        for (int j = i + 2; j < n; j++) {
+            int hap = a[i] + a[j];
+            res = max(res, hap);
         }
     }
 
