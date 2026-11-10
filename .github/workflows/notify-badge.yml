@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl -sS -X POST \
-            -H "Authorization: Bearer ${{ secrets.BADGE_DISPATCH_TOKEN }}" \
+          curl -sS --fail-with-body -X POST \
+            -H "Authorization: Bearer ${{ secrets.PROGRAMMERS_STREAK_DISPATCH }}" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/harim789/programmers-streak-badge/dispatches \
             -d '{"event_type":"solved"}'
