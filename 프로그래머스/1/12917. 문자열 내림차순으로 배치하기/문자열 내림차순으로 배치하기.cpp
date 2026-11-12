@@ -15,10 +15,10 @@ string solution(string s) {
         }
     }
     
-    sort(v_small.begin(), v_small.end());
-    reverse(v_small.begin(), v_small.end());
-    sort(v_big.begin(), v_big.end());
-    reverse(v_big.begin(), v_big.end());
+    sort(v_small.begin(), v_small.end(), greater<char>());
+    // reverse(v_small.begin(), v_small.end());
+    sort(v_big.begin(), v_big.end(), greater<char>());
+    // reverse(v_big.begin(), v_big.end());
     
     string ans;
     
