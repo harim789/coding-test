@@ -1,14 +1,23 @@
 #include <vector>
-#include <numeric>
 using namespace std;
 
+int gcd(int n, int m) {
+    while(m != 0) {
+        int r = n % m;
+        n = m;
+        m = r;
+    }
+    return n;
+}
+
+int lcm(int n, int m) {
+    return n * m / gcd(n, m);
+}
+
 vector<int> solution(int n, int m) {
-    int gongyaksu = gcd(n, m);
-    int gongbasu = lcm(n, m);
-    
     vector<int> ans;
-    ans.push_back(gongyaksu);
-    ans.push_back(gongbasu);
+    ans.push_back(gcd(n, m));
+    ans.push_back(lcm(n, m));
     
     return ans;
 }
