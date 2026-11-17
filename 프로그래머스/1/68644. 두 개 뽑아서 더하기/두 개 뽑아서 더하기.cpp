@@ -15,23 +15,30 @@
 
     erase(newEnd, end())가 newEnd부터 끝까지를 실제로 삭제해서 크기를 줄여요.
 */
+
 #include <iostream>
 #include <vector>
+#include <set>
 #include <algorithm>
 using namespace std;
 
 vector<int> solution(vector<int> numbers) {
     int size = numbers.size();
     
-    vector<int> add;
+    // vector<int> add;
+    vector<int> ans;
+    set<int> s;
     for (int i = 0; i < size; i++) {
         for (int j = i + 1; j < size; j++) {
-            add.push_back(numbers[i] + numbers[j]);
+            // add.push_back(numbers[i] + numbers[j]);
+            s.insert(numbers[i] + numbers[j]);
         }
     }
     
-    sort(add.begin(), add.end());
-    add.erase(unique(add.begin(), add.end()), add.end());
-    
-    return add;
+    // sort(add.begin(), add.end());
+    // add.erase(unique(add.begin(), add.end()), add.end());
+
+    // return add;
+    ans.assign(s.begin(), s.end());
+    return ans;
 }
